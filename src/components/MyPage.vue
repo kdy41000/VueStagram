@@ -37,8 +37,7 @@ export default {
         console.log("store:", store.state.name);
 
         onMounted(() => {  // setup함수 안에서는 mounted등 앞에 on을 붙여야함
-            
-            axios.get('/follower.json')
+            axios.get(window.location.href + 'follower.json')
             .then(res => { 
                 follower.value = res.data;  // 데이터 조작 시, "변수명.value" 형태로 사용해야함
                 followerOriginal.value = [...res.data];
@@ -50,7 +49,6 @@ export default {
         })
 
         function putVal(param) {
-            console.log(param);
             let newFollower = followerOriginal.value.filter((a) => {
                 return a.name.indexOf(param) != -1
             });

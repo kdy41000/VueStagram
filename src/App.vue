@@ -4,7 +4,8 @@
       <li v-if="step != 0" @click="step = 0">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li  v-if="step == 1" @click="step++">Next</li>
+      <li v-if="step == 0" @click="step = 3">팔로워</li>
+      <li v-if="step == 1" @click="step++">Next</li>
       <li v-if="step == 2" @click="publish">발행</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
@@ -35,7 +36,7 @@
     더보기
   </button>
 
-  <div class="footer">
+  <div class="footer" v-if="step == 0">
     <ul class="footer-button-plus">
       <input @change="uploadImage" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
